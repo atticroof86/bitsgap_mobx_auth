@@ -19,6 +19,7 @@ dependencies:
   flutter_mobx: ^2.0.6+5
   mobx_widget: ^0.5.1
   shared_preferences: ^2.1.0
+  flutter_svg: ^2.0.5
 
 dev_dependencies:
   flutter_test:
@@ -32,3 +33,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/path/
+  fonts:
+  - family: TT Norms Pro
+    fonts:
+      - asset: assets/fonts/TT Norms Pro Bold.otf
+      - asset: assets/fonts/TT Norms Pro Light.otf
+      - asset: assets/fonts/TT Norms Pro Medium.otf
+      - asset: assets/fonts/TT Norms Pro Regular.otf
