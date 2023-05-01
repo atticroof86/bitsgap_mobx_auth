@@ -1,3 +1,4 @@
+import 'package:bitsgap_mobx_auth/shared/_shared.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppColors {
@@ -108,4 +109,68 @@ class AppTheme {
 
   static final light = _make(const AppColorsLight(), Brightness.light);
   static final dark = _make(const AppColorsDark(), Brightness.dark);
+}
+
+class AppSnacks {
+  static const snackOk = SnackBar(
+    margin: EdgeInsets.all(24),
+    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+    content: _Snack(_iconOk),
+    backgroundColor: AppColorsLight._success,
+    closeIconColor: Colors.white,
+    showCloseIcon: true,
+    behavior: SnackBarBehavior.floating,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+  );
+
+  static const snackError = SnackBar(
+    margin: EdgeInsets.all(24),
+    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+    content: _Snack(_iconError),
+    backgroundColor: AppColorsLight._error,
+    closeIconColor: Colors.white,
+    showCloseIcon: true,
+    behavior: SnackBarBehavior.floating,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+  );
+}
+
+const _iconOk = SizedBox(width: 26, height: 26, child: Icon(Icons.check_circle, color: Colors.white, size: 26));
+const _iconError = SizedBox(width: 26, height: 26, child: Icon(Icons.cancel, color: Colors.white, size: 26));
+
+class _Snack extends StatelessWidget {
+  const _Snack(this.icon);
+
+  final Widget icon;
+
+  @override
+  Widget build(BuildContext context) => Row(mainAxisSize: MainAxisSize.min, children: [
+        icon,
+        15.w,
+        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const Text(
+            'Well done!',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              height: 28 / 20,
+              letterSpacing: .15,
+              fontWeight: FontWeight.w500,
+              fontFamily: 'TT Norms Pro',
+            ),
+          ),
+          2.h,
+          const Text("Lorem ipsum dolor sit amet,\n consectetur",
+              maxLines: 2,
+              softWrap: true,
+              overflow: TextOverflow.fade,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+                height: 20 / 14,
+                fontWeight: FontWeight.w400,
+                fontFamily: 'TT Norms Pro',
+              ))
+        ])
+      ]);
 }
